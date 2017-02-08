@@ -11,7 +11,8 @@ if (!function_exists("__serve_get_value")) {
      *
      * @return mixed
      */
-    function __serve_get_value(array $options, $optionsKey, $envKey, $default = null) {
+    function __serve_get_value(array $options, $optionsKey, $envKey, $default = null)
+    {
         if (!empty($options[$optionsKey])) {
             return $options[$optionsKey];
         }
