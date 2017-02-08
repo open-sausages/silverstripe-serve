@@ -19,20 +19,26 @@ class ServerLauncher
 
         $command = sprintf(
             "'%s' -S %s:%s -t '%s' '%s/handler.php'",
-            $bin, $host, $port, $path, __DIR__
+            $bin,
+            $host,
+            $port,
+            $path,
+            __DIR__
         );
 
         if (!empty($hash)) {
             $command = sprintf(
                 "SERVE_HASH=%s %s",
-                escapeshellarg($hash), $command
+                escapeshellarg($hash),
+                $command
             );
         }
 
         if (!empty($bootstrapFile)) {
             $command = sprintf(
                 "SERVE_BOOTSTRAP_FILE=%s %s",
-                escapeshellarg($bootstrapFile), $command
+                escapeshellarg($bootstrapFile),
+                $command
             );
         }
 
@@ -40,7 +46,9 @@ class ServerLauncher
 
         print sprintf(
             "Server running at http://%s:%s for %s...\n",
-            $host, $port, $path
+            $host,
+            $port,
+            $path
         );
 
         passthru($command);
