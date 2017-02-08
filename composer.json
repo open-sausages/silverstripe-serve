@@ -3,8 +3,8 @@
     "description": "Connects the PHP development server to SilverStripe",
     "license": "MIT",
     "require": {
-        "php": "^5.5.9",
-        "symfony/process": "^3.0",
+        "php": "^5.5.9|^7.0",
+        "symfony/process": "^2.8|^3.0",
         "silverstripe/framework": "^3.2|^4.0"
     },
     "autoload": {
