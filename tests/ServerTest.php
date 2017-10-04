@@ -10,8 +10,17 @@ class ServerTest extends \PHPUnit_Framework_TestCase
     public function testStartStop()
     {
         $factory = new ServerFactory(realpath(__DIR__ . '/..'));
+
+        if (file_exists(BASE_PATH . '/vendor/silverstripe/framework/tests/behat/serve-bootstrap.php')) {
+            // SS4
+            $bootstrapFile = 'vendor/silverstripe/framework/tests/behat/serve-bootstrap.php';
+        } else {
+            // SS3
+            $bootstrapFile = 'framework/tests/behat/serve-bootstrap.php';
+        }
+
         $server = $factory->launchServer([
-            'bootstrapFile' => 'framework/tests/behat/serve-bootstrap.php',
+            'bootstrapFile' => $bootstrapFile,
             'host' => 'localhost',
             'preferredPort' => '3000',
         ]);
