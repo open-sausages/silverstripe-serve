@@ -25,7 +25,17 @@ if ($uri !== "/" && file_exists(BASE_PATH . $uri) && !is_dir(BASE_PATH . $uri)) 
 $_GET["url"] = $uri;
 $_REQUEST["url"] = $uri;
 
-if (file_exists(BASE_PATH . '/index.php')) {
+$publicPath = null;
+if (getenv('SS_PUBLIC_PATH')) {
+    $publicPath = getenv('SS_PUBLIC_PATH');
+} elseif(getenv('SS_PUBLIC_DIR')) {
+    $publicPath = BASE_PATH . DIRECTORY_SEPARATOR . getenv('SS_PUBLIC_DIR');
+}
+
+if ($publicPath && file_exists($publicPath. '/index.php')) {
+    // SS4 with public path as webroot
+    require_once $publicPath . '/index.php';
+} elseif (file_exists(BASE_PATH . '/index.php')) {
     // SS4 with base path as webroot
     require_once BASE_PATH . '/index.php';
 } elseif (defined('FRAMEWORK_PATH')) {

@@ -28,8 +28,8 @@ class ServerTest extends \PHPUnit_Framework_TestCase
         // Server is immediately started
         $this->assertTrue(PortChecker::isPortOpen('localhost', $server->getPort()));
 
-        $content = file_get_contents($server->getURL() . 'dev');
-        $this->assertContains('<h1>SilverStripe Development Tools</h1>', $content);
+        $content = file_get_contents($server->getURL() . 'Security/login');
+        $this->assertContains('MemberLoginForm_LoginForm', $content);
 
         // When it stops, it stops listening
         $server->stop();
